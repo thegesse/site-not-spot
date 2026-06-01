@@ -1,0 +1,12 @@
+node_modules
+# Keep environment variables out of version control
+.env
+.env.*
+
+# Local SQLite databases may contain user data.
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+/generated/prisma

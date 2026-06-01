@@ -276,3 +276,52 @@ footer {
         gap: 10px;
     }
 }
+
+/* ==========================================================================
+   8. FORM & INPUT UTILITIES
+   ========================================================================== */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #94a3b8;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background-color: #0f172a; /* Blends perfectly into the dark canvas */
+    color: white;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2563eb; /* Highlights input field borders blue when clicked */
+}
+
+/* Layout adjustments for buttons stacked inside the form modal */
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.form-actions .download-btn,
+.form-actions .close-btn {
+    margin: 0; /* Clear previous automatic code gaps */
+    width: 100%;
+}

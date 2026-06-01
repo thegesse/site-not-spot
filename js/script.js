@@ -1,3 +1,4 @@
+//boxes for downloads
 const platform = [
     {
         name: "Online player",
@@ -62,4 +63,23 @@ function openModal(name, steps) {
 
 function closeModal() {
     overlay.classList.remove('active');
+}
+
+//signup form
+const signUpOverlay = document.getElementById('signUpModalOverlay');
+const updatesForm = document.getElementById('updatesForm');
+
+function openSignUpModal() {
+    signUpOverlay.classList.add('active');
+}
+function closeSignUpModal() {
+    signUpOverlay.classList.remove('active');
+}
+
+function handleSignUpSubmit(event) {
+    const name = document.getElementById('username').value;
+    const email = document.getElementById('userEmail').value;
+
+    alert(`Thanks for signing up. We'll send updates to ${email}.`);
+    closeSignUpModal;
 }
