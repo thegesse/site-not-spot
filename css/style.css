@@ -1,0 +1,278 @@
+/* ==========================================================================
+   1. GLOBAL RESETS & STYLING (Dark Theme Baseline)
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #0f172a; /* Rich dark slate background */
+    color: #f8fafc; /* Crisp off-white text */
+    line-height: 1.6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Forces footer to the bottom of the page */
+}
+
+h1, h2, h3 {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+p {
+    color: #94a3b8; /* Soft slate grey for readable descriptions */
+}
+
+/* Container limits to keep paragraphs from stretching too wide on massive screens */
+.infoText, .installs, .header, footer {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   2. HEADER CONTAINER (Flexbox Row Alignment)
+   ========================================================================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 30px 0;
+    border-bottom: 1px solid #334155; /* Subtle separation line */
+}
+
+.Left-text h1 {
+    font-size: 2.2rem;
+    letter-spacing: -0.05em;
+}
+
+.right-button button {
+    background-color: #2563eb; /* Primary Accent Blue */
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.right-button button p {
+    color: white !important;
+    font-weight: 600;
+}
+
+.right-button button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   3. INFO & SECTION CONTENT
+   ========================================================================== */
+.infoText {
+    padding: 40px 0;
+}
+
+.infoText h2 {
+    margin-bottom: 16px;
+    font-size: 1.75rem;
+}
+
+.installs {
+    margin-top: 20px;
+    flex-grow: 1; /* Pushes the remaining elements down */
+}
+
+.download-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   4. RESPONSIVE DOWNLOAD GRID
+   ========================================================================== */
+.download-grid {
+    display: grid;
+    /* auto-fit makes columns multiply dynamically; minmax says never shrink below 240px */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    padding: 30px 0;
+}
+
+.grid-card {
+    background-color: #1e293b; /* Elevated lighter slate layer */
+    padding: 28px;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.platform-icon {
+    font-size: 3.5rem;
+    margin-bottom: 12px;
+}
+
+.grid-card h3 {
+    margin-bottom: 16px;
+}
+
+/* Buttons inside the generated grid elements */
+.download-btn, .info-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    margin-top: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    font-size: 0.95rem;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.download-btn {
+    background-color: #2563eb;
+    color: white;
+}
+
+.download-btn:hover {
+    background-color: #1d4ed8;
+}
+
+.info-btn {
+    background-color: #334155;
+    color: #cbd5e1;
+}
+
+.info-btn:hover {
+    background-color: #475569;
+    color: white;
+}
+
+/* ==========================================================================
+   5. POPUP GUIDE MODAL (Blurred Overlay Architectural Model)
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px); /* Blurs out download matrix backdrop */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 999;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-box {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    padding: 32px;
+    border-radius: 16px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-box h3 {
+    margin-top: 0;
+    color: #2563eb;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.modal-box p {
+    color: #e2e8f0;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    background-color: #334155;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+.close-btn:hover {
+    background-color: #475569;
+}
+
+/* ==========================================================================
+   6. FOOTER STYLING
+   ========================================================================== */
+footer {
+    margin-top: auto; /* Keeps footer pinned downward */
+    padding: 40px 0 20px 0;
+    border-top: 1px solid #334155;
+}
+
+.contacts h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.contacts ul {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Horizontal social links spacing */
+    flex-wrap: wrap;
+}
+
+.contacts ul li {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   7. RESPONSIVITY MEDIA QUERIES (Mobile UI Customizations)
+   ========================================================================== */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .right-button {
+        width: 100%;
+    }
+
+    .right-button button {
+        width: 100%; /* Full width sign-up button on phone dimensions */
+    }
+
+    .contacts ul {
+        flex-direction: column; /* Vertically stack links on mobile devices */
+        gap: 10px;
+    }
+}
