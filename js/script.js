@@ -1,5 +1,5 @@
 //boxes for downloads
-const platform = [
+const platforms = [
     {
         name: "Online player",
         link: "placeholder link.com",
@@ -33,22 +33,31 @@ const platform = [
 
 const gridContainer = document.getElementById('downloadGrid');
 
-platform.forEach(platform => {
+platforms.forEach(platform => {
+    const card = document.createElement('div');
+    card.className = 'grid-card';
+
     const instructionButton = platform.hasInstructions
-        ? `<button class="info-btn" onclick="openModal('${platform.name}', \`${platform.instructions}\`)">Setup Guide</button>`
+        ? `<button class="info-btn">Setup Guide</button>`
         : "";
 
-    const buttonText = platform.name === "Online player"
-        ? "Open in browser"
-        : "Download Now";
+    const buttonText = platform.name === "Online player" ? "Open in browser" : "Download Now";
 
-    gridContainer.innerHTML += `
-    <div class="grid-card">
-        <h3>${platform.name}</h3>
-        <a href="${platform.link}" class="download-btn" target="_blank">${buttonText}</a>
+    card.innerHTML = `
+        <h3></h3>
+        <a class="download-btn" target="_blank">${buttonText}</a>
         ${instructionButton}
-    </div>
     `;
+    card.querySelector('h3').textContent = platform.name;
+    card.querySelector('.download-btn').href = platform.link;
+
+    if (platform.hasInstructions) {
+        card.querySelector('.info-btn').addEventListener('click', () => {
+            openModal(platform.name, platform.instructions);
+        });
+    }
+
+    gridContainer.appendChild(card);
 });
 
 const overlay = document.getElementById('modalOverlay');
