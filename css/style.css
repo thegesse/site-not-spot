@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. GLOBAL RESETS & STYLING (Dark Theme Baseline)
+   1. GLOBAL RESETS & STYLING (Premium Dark Theme Baseline)
    ========================================================================== */
 * {
     box-sizing: border-box;
@@ -9,8 +9,8 @@
 
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #0f172a; /* Rich dark slate background */
-    color: #f8fafc; /* Crisp off-white text */
+    background-color: #0b0b0b; /* Deep pitch black background */
+    color: #e3e3e3; /* Soft light-grey text for clean readability */
     line-height: 1.6;
     padding: 20px;
     display: flex;
@@ -24,7 +24,7 @@ h1, h2, h3 {
 }
 
 p {
-    color: #94a3b8; /* Soft slate grey for readable descriptions */
+    color: #a3a3a3; /* Subdued slate grey for descriptions */
 }
 
 /* Container limits to keep paragraphs from stretching too wide on massive screens */
@@ -42,7 +42,7 @@ p {
     justify-content: space-between;
     align-items: center;
     padding: 20px 0 30px 0;
-    border-bottom: 1px solid #334155; /* Subtle separation line */
+    border-bottom: 2px solid #282828; /* Stronger dark separation line */
 }
 
 .Left-text h1 {
@@ -50,22 +50,31 @@ p {
     letter-spacing: -0.05em;
 }
 
+/* Hub-style text highlighting trick (optional if you want to wrap a word in your HTML h1) */
+.Left-text h1 span {
+    background-color: #ff9900;
+    color: #000000;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 4px;
+}
+
 .right-button button {
-    background-color: #2563eb; /* Primary Accent Blue */
+    background-color: #ff9900; /* Signature Hub Orange */
     border: none;
     padding: 12px 24px;
-    border-radius: 8px;
+    border-radius: 6px; /* Slightly sharper premium corners */
     cursor: pointer;
     transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .right-button button p {
-    color: white !important;
-    font-weight: 600;
+    color: #000000 !important; /* Bold black text on orange background */
+    font-weight: 700;
 }
 
 .right-button button:hover {
-    background-color: #1d4ed8;
+    background-color: #ffa31a; /* Brighter orange hover glow */
     transform: translateY(-1px);
 }
 
@@ -103,25 +112,27 @@ p {
 }
 
 .grid-card {
-    background-color: #1e293b; /* Elevated lighter slate layer */
+    background-color: #1b1b1b; /* Elevated sleek charcoal grey layer */
+    border: 1px solid #282828; /* Subtle border mapping */
     padding: 28px;
-    border-radius: 12px;
+    border-radius: 8px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .grid-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+    border-color: #ff9900; /* Card lights up orange on hover */
 }
 
 .platform-icon {
     font-size: 3.5rem;
     margin-bottom: 12px;
+    color: #ff9900; /* Icons inherit the theme highlight */
 }
 
 .grid-card h3 {
@@ -134,8 +145,8 @@ p {
     width: 100%;
     padding: 12px 0;
     margin-top: 12px;
-    border-radius: 8px;
-    font-weight: bold;
+    border-radius: 6px;
+    font-weight: 700;
     cursor: pointer;
     border: none;
     text-decoration: none;
@@ -145,22 +156,21 @@ p {
 }
 
 .download-btn {
-    background-color: #2563eb;
-    color: white;
+    background-color: #ff9900;
+    color: #000000;
 }
 
 .download-btn:hover {
-    background-color: #1d4ed8;
+    background-color: #ffa31a;
 }
 
 .info-btn {
-    background-color: #334155;
-    color: #cbd5e1;
+    background-color: #333333;
+    color: #ffffff;
 }
 
 .info-btn:hover {
-    background-color: #475569;
-    color: white;
+    background-color: #444444;
 }
 
 /* ==========================================================================
@@ -169,8 +179,8 @@ p {
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(6px); /* Blurs out download matrix backdrop */
+    background-color: rgba(0, 0, 0, 0.85); /* Darker backdrop mask */
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -186,41 +196,41 @@ p {
 }
 
 .modal-box {
-    background-color: #1e293b;
-    border: 1px solid #334155;
+    background-color: #1b1b1b;
+    border: 2px solid #ff9900; /* Bold orange outline for the alert frame */
     padding: 32px;
-    border-radius: 16px;
+    border-radius: 12px;
     max-width: 450px;
     width: 90%;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
 }
 
 .modal-box h3 {
     margin-top: 0;
-    color: #2563eb;
+    color: #ff9900;
     font-size: 1.5rem;
     margin-bottom: 12px;
 }
 
 .modal-box p {
-    color: #e2e8f0;
+    color: #e3e3e3;
     line-height: 1.6;
     margin-bottom: 20px;
 }
 
 .close-btn {
-    background-color: #334155;
+    background-color: #333333;
     color: white;
     border: none;
     padding: 12px 24px;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
     width: 100%;
 }
 
 .close-btn:hover {
-    background-color: #475569;
+    background-color: #444444;
 }
 
 /* ==========================================================================
@@ -229,7 +239,7 @@ p {
 footer {
     margin-top: auto; /* Keeps footer pinned downward */
     padding: 40px 0 20px 0;
-    border-top: 1px solid #334155;
+    border-top: 2px solid #282828;
 }
 
 .contacts h3 {
@@ -240,13 +250,19 @@ footer {
 .contacts ul {
     list-style: none;
     display: flex;
-    gap: 20px; /* Horizontal social links spacing */
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .contacts ul li {
-    color: #94a3b8;
+    color: #a3a3a3;
     font-size: 0.95rem;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+.contacts ul li:hover {
+    color: #ff9900; /* Footer items flash orange when targeted */
 }
 
 /* ==========================================================================
@@ -272,7 +288,7 @@ footer {
     }
 
     .contacts ul {
-        flex-direction: column; /* Vertically stack links on mobile devices */
+        flex-direction: column;
         gap: 10px;
     }
 }
@@ -292,15 +308,15 @@ footer {
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 6px;
-    color: #94a3b8;
+    color: #a3a3a3;
 }
 
 .form-group input {
     width: 100%;
     padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #334155;
-    background-color: #0f172a; /* Blends perfectly into the dark canvas */
+    border-radius: 6px;
+    border: 1px solid #333333;
+    background-color: #0b0b0b; /* Blends perfectly into the dark canvas */
     color: white;
     font-size: 0.95rem;
     transition: border-color 0.2s ease;
@@ -308,7 +324,7 @@ footer {
 
 .form-group input:focus {
     outline: none;
-    border-color: #2563eb; /* Highlights input field borders blue when clicked */
+    border-color: #ff9900; /* Highlights input field borders orange when active */
 }
 
 /* Layout adjustments for buttons stacked inside the form modal */
