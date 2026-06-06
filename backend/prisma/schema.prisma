@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model people {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(225)
+  email String @unique @db.VarChar(225)
+}
