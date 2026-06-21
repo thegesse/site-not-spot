@@ -2,7 +2,7 @@
 const platforms = [
     {
         name: "Online player",
-        link: "placeholder link.com",
+        link: "https://thegesse.github.io/projet-final/",
         hasInstructions: true,
         instructions: "<strong>For Mobile (iOS/Android):</strong> Open in browser, tap your menu/share button, and select 'Add to Home Screen' for the native app framework layout experience."
     },
