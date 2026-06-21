@@ -8,7 +8,7 @@ const platforms = [
     },
     {
         name: "Android",
-        link: "placeholder link.com",
+        link: "https://drive.google.com/file/d/1RheP-JYQWYKd5VxZXpbPYY6sGQKYZSuu/view?usp=drive_link",
         hasInstructions: true,
         instructions: "1. Download the APK file.<br>2. Open it on your phone.<br>3. Allow 'installs from unknown sources' is asked"
     },
@@ -25,7 +25,7 @@ const platforms = [
     },
     {
         name: "Linux",
-        link: "placeholder link.com",
+        link: "https://drive.google.com/file/d/1fzoeQ6XdjhxYUZ4dxPPiW-OB6C1v8u7b/view?usp=drive_link",
         hasInstructions: true,
         instructions: "1. Download the AppImage.<br>2. Right-click the file and check 'Allow executing file as program'.<br>3. Double-click to launch."
     }
@@ -85,10 +85,35 @@ function closeSignUpModal() {
     signUpOverlay.classList.remove('active');
 }
 
-function handleSignUpSubmit(event) {
-    const name = document.getElementById('username').value;
-    const email = document.getElementById('userEmail').value;
+//handshake to send data to db
+async function handleSignUpSubmit(event) {
+    event.preventDefault()
 
-    alert(`Thanks for signing up. We'll send updates to ${email}.`);
-    closeSignUpModal;
+    const name = document.getElementById('userName').value
+    const email = document.getElementById('userEmail').value
+
+    console.log('Submitting:', { name, email })
+
+    try {
+        const response = await fetch('http://localhost:3000/api/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email })
+        })
+
+        console.log('Response status:', response.status)
+        
+        const data = await response.json()
+        console.log('Response data:', data)
+
+        if (data.success) {
+            alert('Thanks for signing up, we will send updates to your email')
+            closeSignUpModal()
+        } else {
+            alert('Error from server: ' + (data.error || 'Unknown error'))
+        }
+    } catch (e) {
+        console.error('Catch error:', e)
+        alert('Failed to connect to server: ' + e.message)
+    }
 }
